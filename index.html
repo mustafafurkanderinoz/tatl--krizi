@@ -95,7 +95,7 @@
                     </div>
                 </a>
 
-                <div class="hidden md:flex items-center gap-7 font-medium text-sm">
+                <div class="hidden md:flex items-center gap-8 font-medium text-sm">
                     <a href="#about" class="hover:text-caramel-400 transition-colors">Neden Biz?</a>
                     <a href="#menu" class="hover:text-caramel-400 transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-utensils text-xs text-pistachio-500"></i> Dijital Menü
@@ -104,13 +104,7 @@
                     <a href="#contact" class="hover:text-caramel-400 transition-colors">İletişim & Konum</a>
                 </div>
 
-                <div class="flex items-center gap-2.5">
-                    <!-- QR Kodu Göster Butonu -->
-                    <button type="button" onclick="openQrModal()" title="Masa QR Kodunu Göster" class="p-2.5 bg-choco-800 hover:bg-choco-700 text-amber-300 rounded-full transition border border-amber-900/50 flex items-center gap-1.5 px-3">
-                        <i class="fa-solid fa-qrcode text-base"></i>
-                        <span class="hidden sm:inline text-xs font-bold">QR Kod</span>
-                    </button>
-
+                <div class="flex items-center gap-3">
                     <!-- Sepet Butonu -->
                     <button type="button" onclick="toggleCartDrawer()" class="relative p-2.5 bg-choco-800 hover:bg-choco-700 text-cream rounded-full transition border border-amber-900/50 flex items-center justify-center">
                         <i class="fa-solid fa-basket-shopping text-lg text-caramel-400"></i>
@@ -134,15 +128,11 @@
         <div id="mobile-menu" class="hidden md:hidden bg-choco-900/98 border-t border-amber-900/40 px-4 pt-3 pb-6 space-y-3 text-sm font-medium">
             <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800">Neden Biz?</a>
             <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800 flex items-center justify-between">
-                <span>Dijital QR Menü</span>
+                <span>Dijital Menü</span>
                 <span class="bg-pistachio-500 text-choco-900 text-xs px-2 py-0.5 rounded font-bold">Canlı</span>
             </a>
             <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800">Müşteri Yorumları</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800">İletişim & Konum</a>
-            <button type="button" onclick="toggleMobileMenu(); openQrModal();" class="w-full flex items-center justify-center gap-2 bg-choco-800 border border-amber-800/50 text-amber-300 text-sm font-bold py-2.5 rounded-xl transition">
-                <i class="fa-solid fa-qrcode"></i>
-                <span>Masa QR Kodunu Göster</span>
-            </button>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400">İletişim & Konum</a>
             <a href="https://wa.me/905527400771?text=Merhaba!%20Tatl%C4%B1%20Krizi%20men%C3%BCs%C3%BC%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" class="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-3 rounded-xl transition shadow">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
                 <span>WhatsApp İle Ulaşın (0552 740 07 71)</span>
@@ -272,12 +262,12 @@
         </div>
     </section>
 
-    <!-- DİJİTAL QR MENÜ BÖLÜMÜ -->
+    <!-- DİJİTAL MENÜ BÖLÜMÜ -->
     <section id="menu" class="py-16 bg-stone-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-caramel-600">İnteraktif QR Menü</span>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-caramel-600">İnteraktif Menü</span>
                     <h2 class="font-heading text-3xl sm:text-4xl font-bold text-choco-900 mt-1">Lezzet Kataloğumuz</h2>
                     <p class="text-stone-600 text-sm mt-1">İstediğiniz ürünleri sepete ekleyerek tek tıkla WhatsApp üzerinden sipariş verebilirsiniz.</p>
                 </div>
@@ -380,7 +370,7 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM & KONUM & QR KARTI -->
+    <!-- İLETİŞİM & KONUM & OPENSTREETMAP HARİTASI -->
     <section id="contact" class="py-16 bg-choco-900 text-cream relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -428,18 +418,13 @@
                     <div class="flex flex-wrap gap-3 pt-2">
                         <a href="https://www.google.com/maps/dir/?api=1&destination=39.8475,33.4550" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-3 rounded-xl transition shadow">
                             <i class="fa-solid fa-diamond-turn-right text-sm"></i>
-                            <span>Yol Tarifi Al</span>
+                            <span>Google Haritalar'da Yol Tarifi Al</span>
                         </a>
 
                         <a href="https://wa.me/905527400771" target="_blank" class="inline-flex items-center gap-2 bg-caramel-500 hover:bg-caramel-600 text-choco-950 text-xs font-bold px-5 py-3 rounded-xl transition shadow">
                             <i class="fa-brands fa-whatsapp text-sm"></i>
-                            <span>Mesaj At</span>
+                            <span>Doğrudan Mesaj At</span>
                         </a>
-
-                        <button type="button" onclick="openQrModal()" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-amber-300 text-xs font-bold px-5 py-3 rounded-xl border border-amber-500/30 transition">
-                            <i class="fa-solid fa-qrcode text-sm"></i>
-                            <span>Masa QR Kartı</span>
-                        </button>
                     </div>
                 </div>
 
@@ -460,12 +445,6 @@
                                     <i class="fa-solid fa-location-arrow"></i>
                                     <span>Yol Tarifi Başlat</span>
                                 </a>
-                            </div>
-
-                            <!-- Harita Üstü Canlı QR Kodu Kartı -->
-                            <div onclick="openQrModal()" class="cursor-pointer absolute bottom-4 right-4 bg-white p-2.5 rounded-2xl shadow-xl border-2 border-caramel-500 text-center w-28 hover:scale-105 transition">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=2B1B17&data=https://mustafafurkanderinoz.github.io/tatl--krizi/" alt="QR Menü" class="w-full h-auto rounded-lg">
-                                <span class="block text-[9px] font-extrabold text-choco-900 mt-1">QR MENÜ OKUT</span>
                             </div>
 
                             <div class="absolute bottom-4 left-4 bg-choco-950/90 backdrop-blur px-4 py-2.5 rounded-xl border border-amber-900/40 text-xs flex items-center gap-3 text-amber-200">
@@ -494,9 +473,6 @@
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button type="button" onclick="openQrModal()" class="w-9 h-9 rounded-full bg-choco-800 text-amber-300 hover:text-white hover:bg-caramel-600 transition flex items-center justify-center" title="QR Kodu Göster">
-                        <i class="fa-solid fa-qrcode text-base"></i>
-                    </button>
                     <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-choco-800 text-stone-300 hover:text-white hover:bg-caramel-600 transition flex items-center justify-center">
                         <i class="fa-brands fa-instagram text-base"></i>
                     </a>
@@ -512,50 +488,12 @@
             <div class="mt-8 pt-6 border-t border-choco-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500 gap-2">
                 <span class="flex items-center gap-1.5">
                     <i class="fa-solid fa-code text-pistachio-500"></i>
-                    <span>Bu Özel Dijital Web Sitesi & QR Menü Demosu <strong>Tatlı Krizi</strong> İçin Hazırlanmıştır.</span>
+                    <span>Bu Özel Dijital Web Sitesi Demosu <strong>Tatlı Krizi</strong> İçin Hazırlanmıştır.</span>
                 </span>
                 <span class="text-amber-400 font-semibold">📞 İletişim & WhatsApp: 0552 740 07 71</span>
             </div>
         </div>
     </footer>
-
-    <!-- MASA QR KODU SUNUM MODALI -->
-    <div id="qr-modal" class="fixed inset-0 z-[70] hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this) closeQrModal()">
-        <div class="bg-cream text-choco-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border-2 border-caramel-500 text-center relative">
-            <button type="button" onclick="closeQrModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 text-choco-900 flex items-center justify-center">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="w-12 h-12 rounded-full bg-choco-900 text-caramel-400 flex items-center justify-center text-xl mx-auto mb-2 shadow">
-                <i class="fa-solid fa-stroopwafel"></i>
-            </div>
-            <h3 class="font-heading font-extrabold text-2xl text-choco-900">TATLI KRİZİ</h3>
-            <p class="text-xs font-bold text-pistachio-600 uppercase tracking-widest mb-4">Dijital QR Menü & Sipariş</p>
-
-            <!-- Masa Seçici -->
-            <div class="mb-4">
-                <label class="block text-[11px] font-bold text-stone-600 mb-1">Masa Numarası Seçin (Otomatik Tanımlar):</label>
-                <select id="qr-table-select" onchange="updateQrPreview()" class="w-full text-xs font-bold p-2.5 rounded-xl border border-stone-300 bg-white text-choco-900 focus:outline-none focus:ring-2 focus:ring-caramel-500">
-                    <option value="">Genel Menü (Masa Seçimsiz)</option>
-                    <option value="Masa 1">Masa 1</option>
-                    <option value="Masa 2">Masa 2</option>
-                    <option value="Masa 3">Masa 3</option>
-                    <option value="Masa 4">Masa 4</option>
-                    <option value="Masa 5">Masa 5</option>
-                    <option value="Masa 6">Masa 6</option>
-                    <option value="Bahçe 1">Bahçe 1</option>
-                    <option value="Bahçe 2">Bahçe 2</option>
-                </select>
-            </div>
-
-            <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-inner inline-block">
-                <img id="qr-modal-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=2B1B17&data=https://mustafafurkanderinoz.github.io/tatl--krizi/" alt="Tatlı Krizi QR Kod" class="w-52 h-52 mx-auto">
-                <p id="qr-table-label" class="font-heading font-bold text-sm text-choco-900 mt-2">Menüyü Gör & Sipariş Ver</p>
-            </div>
-
-            <p class="text-[11px] text-stone-500 mt-3">Telefon kameranızı QR koda okutarak menüyü açabilir ve masanıza sipariş verebilirsiniz.</p>
-        </div>
-    </div>
 
     <!-- MOBİL SABİT SEPET BARI -->
     <div id="mobile-cart-bar" class="fixed bottom-4 left-4 right-4 z-40 md:hidden bg-choco-900/95 backdrop-blur border border-amber-900/60 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between">
@@ -640,8 +578,6 @@
 
     <!-- JAVASCRIPT MANTIĞI -->
     <script>
-        const SITE_URL = "https://mustafafurkanderinoz.github.io/tatl--krizi/";
-
         const menuItems = [
             { id: 1, title: "Belçika Çikolatalı San Sebastian", category: "cikolata", price: 220, desc: "Fırından taze çıkmış ipeksi dokulu San Sebastian üzerine eritilmiş sıcak Belçika çikolatası.", badge: "En Çok Satan", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" },
             { id: 2, title: "Dubai Çikolatalı Brownie", category: "cikolata", price: 240, desc: "Çıtır kadayıf, Antep fıstığı ezmesi ve yoğun çikolata kaplamalı sıcak ıslak brownie.", badge: "Trend Lezzet", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" },
@@ -682,44 +618,6 @@
         let deliveryType = 'masaya';
         let toastTimer = null;
         let isCartOpen = false;
-        let isQrOpen = false;
-
-        // QR MODAL & MASA OTOMATİK TANIMA
-        function openQrModal() {
-            const modal = document.getElementById('qr-modal');
-            modal.classList.remove('hidden');
-            isQrOpen = true;
-            if (!window.history.state || !window.history.state.qrOpen) {
-                window.history.pushState({ qrOpen: true }, '', '#qr');
-            }
-        }
-
-        function closeQrModal(fromPopState = false) {
-            if (!isQrOpen) return;
-            document.getElementById('qr-modal').classList.add('hidden');
-            isQrOpen = false;
-            if (!fromPopState && window.history.state && window.history.state.qrOpen) {
-                window.history.back();
-            }
-        }
-
-        function updateQrPreview() {
-            const table = document.getElementById('qr-table-select').value;
-            const targetUrl = table ? `${SITE_URL}?masa=${encodeURIComponent(table)}` : SITE_URL;
-            document.getElementById('qr-modal-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=2B1B17&data=${encodeURIComponent(targetUrl)}`;
-            document.getElementById('qr-table-label').innerText = table ? `${table} — Menüyü Gör & Sipariş Ver` : "Menüyü Gör & Sipariş Ver";
-        }
-
-        function checkTableParam() {
-            const params = new URLSearchParams(window.location.search);
-            const masa = params.get('masa');
-            if (masa) {
-                const noteInput = document.getElementById('order-note');
-                if (noteInput) noteInput.value = masa;
-                setDeliveryType('masaya');
-                showToast(`Hoş geldiniz! ${masa} seçildi.`);
-            }
-        }
 
         // YORUMLARI YÖNETME
         function getAllReviews() {
@@ -979,7 +877,6 @@
 
         window.addEventListener('popstate', function() {
             if (isCartOpen) closeCartDrawer(true);
-            if (isQrOpen) closeQrModal(true);
         });
 
         function toggleMobileMenu() {
@@ -1001,7 +898,6 @@
         window.addEventListener('DOMContentLoaded', function() {
             renderMenu();
             renderReviews();
-            checkTableParam();
         });
     </script>
 </body>
