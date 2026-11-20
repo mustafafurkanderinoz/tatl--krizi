@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatlı Krizi | Kırıkkale Yahşihan Erenler - Butik Tatlı & Kahve</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        choco: {
+                            50: '#fbf7f5',
+                            100: '#f5ebe6',
+                            800: '#3d241d',
+                            900: '#2B1B17',
+                            950: '#1c100d'
+                        },
+                        pistachio: {
+                            500: '#7A9A01',
+                            600: '#647F00',
+                            700: '#4D6300'
+                        },
+                        caramel: {
+                            400: '#e59d4c',
+                            500: '#D48C3B',
+                            600: '#b87328'
+                        },
+                        cream: '#FFFDF9'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFDF9;
+            color: #2B1B17;
+        }
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-nav {
+            background: rgba(43, 27, 23, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- ÜST BİLDİRİM BANDI -->
+    <div class="bg-gradient-to-r from-choco-900 via-choco-800 to-choco-900 text-amber-200 text-xs sm:text-sm font-medium py-2 px-4 text-center border-b border-amber-900/40 flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-pistachio-500 animate-ping"></span>
+        <span>📍 Yahşihan Erenler'de 15 Dakikada Masanızda veya Kapınızda!</span>
+        <a href="tel:05527400771" class="underline font-bold text-amber-400 hover:text-white transition ml-1">
+            <i class="fa-solid fa-phone text-xs mr-1"></i> 0552 740 07 71
+        </a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-40 glass-nav text-cream transition-all duration-300 border-b border-amber-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-caramel-500 to-pistachio-500 flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fa-solid fa-stroopwafel text-choco-900 text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-2xl tracking-wide text-white group-hover:text-caramel-400 transition-colors">TATLI KRİZİ</span>
+                        <span class="text-[10px] tracking-widest text-pistachio-500 uppercase font-semibold">Yahşihan • Erenler</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Linkleri -->
+                <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                    <a href="#about" class="hover:text-caramel-400 transition-colors">Neden Biz?</a>
+                    <a href="#menu" class="hover:text-caramel-400 transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-utensils text-xs text-pistachio-500"></i> Dijital Menü
+                    </a>
+                    <a href="#reviews" class="hover:text-caramel-400 transition-colors">Yorumlar</a>
+                    <a href="#contact" class="hover:text-caramel-400 transition-colors">İletişim & Konum</a>
+                </div>
+
+                <!-- Sağ Aksiyon Butonları -->
+                <div class="flex items-center gap-3">
+                    <!-- Sepet Butonu -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-choco-800 hover:bg-choco-700 text-cream rounded-full transition border border-amber-900/50 flex items-center justify-center">
+                        <i class="fa-solid fa-basket-shopping text-lg text-caramel-400"></i>
+                        <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-pistachio-500 text-choco-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                    </button>
+
+                    <!-- WhatsApp Hızlı Sipariş -->
+                    <a href="https://wa.me/905527400771?text=Merhaba!%20Tatl%C4%B1%20Krizi%20men%C3%BCs%C3%BC%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-full transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>WhatsApp Sipariş</span>
+                    </a>
+
+                    <!-- Mobil Menü Butonu -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-cream hover:text-caramel-400 p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobil Açılır Menü -->
+        <div id="mobile-menu" class="hidden md:hidden bg-choco-900/98 border-t border-amber-900/40 px-4 pt-3 pb-6 space-y-3 text-sm font-medium">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800">Neden Biz?</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800 flex items-center justify-between">
+                <span>Dijital QR Menü</span>
+                <span class="bg-pistachio-500 text-choco-900 text-xs px-2 py-0.5 rounded font-bold">Canlı</span>
+            </a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400 border-b border-choco-800">Müşteri Yorumları</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-cream hover:text-caramel-400">İletişim & Konum</a>
+            
+            <a href="https://wa.me/905527400771?text=Merhaba!%20Tatl%C4%B1%20Krizi%20men%C3%BCs%C3%BC%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" class="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-3 rounded-xl transition shadow">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>WhatsApp İle Ulaşın (0552 740 07 71)</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO BÖLÜMÜ -->
+    <section class="relative bg-choco-900 text-cream overflow-hidden pt-12 pb-20 md:py-24">
+        <div class="absolute inset-0 z-0 opacity-25 mix-blend-overlay pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1600&q=80" alt="Tatlı Arka Plan" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-caramel-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-pistachio-500/15 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Sol Metin Alanı -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/40 text-amber-300 text-xs sm:text-sm font-semibold shadow-inner">
+                        <i class="fa-solid fa-crown text-caramel-400"></i>
+                        <span>Yahşihan Üniversite Bölgesinin En Sevilen Tatlıcısı</span>
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                        Kırıkkale’nin En <span class="text-transparent bg-clip-text bg-gradient-to-r from-caramel-400 via-amber-200 to-pistachio-500">Tatlı Kaçamağı!</span>
+                    </h1>
+
+                    <p class="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        Erenler’de taptaze hazırlanan akışkan Belçika çikolatalı San Sebastian, 
+                        bol antep fıstıklı sıcak waffle, nefis çıtır krep ve 3. nesil nitelikli kahve çeşitleriyle krizlerinizi en lezzetli anlara dönüştürüyoruz.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-caramel-500 to-caramel-600 hover:from-caramel-600 hover:to-caramel-700 text-choco-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-caramel-500/25 hover:shadow-caramel-500/40 transition duration-300 transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Menüyü İncele & Sipariş Ver</span>
+                        </a>
+
+                        <a href="https://wa.me/905527400771?text=Merhaba!%20Masama%20veya%20Adrese%20tatl%C4%B1%20sipari%C5%9Fi%20vermek%20istiyorum." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-4 rounded-xl border border-white/20 backdrop-blur transition duration-300">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                            <span>Hızlı WhatsApp Hattı</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-stone-800 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <p class="font-heading text-2xl font-bold text-caramel-400">100%</p>
+                            <p class="text-xs text-stone-400 font-medium">Belçika Çikolatası</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="font-heading text-2xl font-bold text-pistachio-500">4.9 ★</p>
+                            <p class="text-xs text-stone-400 font-medium">Müşteri Puanı</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="font-heading text-2xl font-bold text-amber-200">15 Dk</p>
+                            <p class="text-xs text-stone-400 font-medium">Ortalama Hazırlık</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ Görsel Vitrin -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-caramel-500 to-pistachio-500 rounded-3xl blur opacity-75 animate-pulse"></div>
+                        
+                        <div class="relative bg-choco-800 rounded-3xl overflow-hidden border border-amber-900/50 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="San Sebastian Cheesecake" class="w-full h-80 sm:h-96 object-cover transform hover:scale-105 transition duration-500">
+                            
+                            <div class="p-6 bg-gradient-to-t from-choco-950 via-choco-900 to-transparent">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="bg-caramel-500/20 border border-caramel-500/40 text-caramel-300 text-xs px-3 py-1 rounded-full font-bold">Günün Yıldızı</span>
+                                    <span class="text-lg font-bold text-amber-300">220 ₺</span>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold text-white">Sıcak Belçika Çikolatalı San Sebastian</h3>
+                                <p class="text-xs text-stone-300 mt-1">Fırından taze çıkan ipeksi dokulu cheesecake, üzerine eritilmiş sıcak Belçika çikolatası ile servis edilir.</p>
+                                
+                                <button onclick="quickAddToCart(1)" class="mt-4 w-full bg-pistachio-600 hover:bg-pistachio-500 text-white font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow">
+                                    <i class="fa-solid fa-plus text-xs"></i> Sepete Ekle
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEDEN BİZ? / AVANTAJLAR -->
+    <section id="about" class="py-16 bg-cream border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-pistachio-600">Özel Lezzet Standartlarımız</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-choco-900 mt-2">Neden Tatlı Krizi?</h2>
+                <p class="text-stone-600 text-sm sm:text-base mt-2">Kırıkkale Yahşihan'da tatlı krizinizi geçici çözümlerle değil, gerçek lezzet sanatıyla gideriyoruz.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-caramel-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-choco-900 mb-2">Günlük Taze Üretim</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">Tüm tatlı hamurlarımız, soslarımız ve kremalarımız her gün taze taze şubemizde hazırlanır.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-choco-900 mb-2">Orijinal Belçika Çikolatası</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">Yapay veya palm yağlı çikolata kullanmayız. %100 gerçek Callebaut Belçika çikolatası eritilir.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-caramel-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-choco-900 mb-2">Nitelikli Kahve Çekirdekleri</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">Taze kavrulmuş %100 Arabica çekirdeklerle hazırlanan espresso, filtre ve soğuk kahve çeşitleri.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-lime-100 text-pistachio-700 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-choco-900 mb-2">Öğrenci Dostu Porsiyonlar</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">Erenler bölgesindeki üniversiteli dostlarımıza bol porsiyon, makul fiyat ve güler yüzlü hizmet!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DİJİTAL QR MENÜ BÖLÜMÜ -->
+    <section id="menu" class="py-16 bg-stone-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-caramel-600">İnteraktif QR Menü</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-choco-900 mt-1">Lezzet Kataloğumuz</h2>
+                    <p class="text-stone-600 text-sm mt-1">İstediğiniz ürünleri sepete ekleyerek tek tıkla WhatsApp üzerinden sipariş verebilirsiniz.</p>
+                </div>
+
+                <!-- Arama Kutusu -->
+                <div class="relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400"></i>
+                    <input type="text" id="menu-search" oninput="filterMenu()" placeholder="Tatlı veya kahve ara..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-caramel-500 shadow-sm">
+                </div>
+            </div>
+
+            <!-- Kategori Butonları -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-hide mb-8">
+                <button onclick="setCategory('all')" class="cat-btn active px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-choco-900 text-white shadow">
+                    Tüm Ürünler
+                </button>
+                <button onclick="setCategory('cikolata')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                    🍫 Çikolatalı Tatlılar
+                </button>
+                <button onclick="setCategory('waffle')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                    🧇 Waffle & Krep
+                </button>
+                <button onclick="setCategory('sutlu')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                    🍮 Sütlü & Kuplar
+                </button>
+                <button onclick="setCategory('kahve')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                    ☕ Kahve & İçecekler
+                </button>
+            </div>
+
+            <!-- Ürün Izgarası -->
+            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Javascript ile dinamik doldurulur -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MÜŞTERİ YORUMLARI -->
+    <section id="reviews" class="py-16 bg-cream border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-pistachio-600">Yahşihan Esnaf & Öğrenci Değerlendirmeleri</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-choco-900 mt-2">Müşterilerimiz Ne Diyor?</h2>
+                <div class="flex items-center justify-center gap-1 text-amber-500 mt-2 text-lg">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-sm font-bold text-choco-900 ml-2">4.9 / 5.0 (Google Haritalar Puanı)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-stone-700 text-sm leading-relaxed italic">
+                            "Yahşihan Erenler'deki en iyi tatlı mekanı net burası! San Sebastian üzerine döktükleri çikolata gerçek Belçika çikolatası, kokusundan bile belli oluyor. Arkadaşlarımızla akşamları vize sonrası sürekli buradayız."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-caramel-500/20 text-caramel-600 font-bold flex items-center justify-center text-sm">
+                            EB
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-choco-900">Emre B.</h4>
+                            <span class="text-xs text-stone-500">Kırıkkale Üniv. Öğrencisi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-stone-700 text-sm leading-relaxed italic">
+                            "Antep fıstıklı waffle ve Iced Caramel Macchiato ikilisi favorim. Porsiyonlar gayet doyurucu ve meyveler hep taze. Çalışanlar çok ilgili ve hızlı. Kesinlikle tavsiye ederim."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-pistachio-500/20 text-pistachio-700 font-bold flex items-center justify-center text-sm">
+                            SZ
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-choco-900">Selin Z.</h4>
+                            <span class="text-xs text-stone-500">Yerel Müşteri</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-stone-700 text-sm leading-relaxed italic">
+                            "Eve WhatsApp üzerinden sipariş verdik, 15-20 dakikada sıcacık krep ve brownie ulaştı. Paketleme çok özenliydi. Erenler bölgesinde tatlı krizine birebir deva!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-choco-800/10 text-choco-900 font-bold flex items-center justify-center text-sm">
+                            AY
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-choco-900">Ahmet Y.</h4>
+                            <span class="text-xs text-stone-500">Google Haritalar Rehberi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM & KONUM & SORUNSUZ OPENSTREETMAP HARİTASI -->
+    <section id="contact" class="py-16 bg-choco-900 text-cream relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Sol Detay Kartları -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-caramel-400">Bizimle İletişime Geçin</span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mt-1">Sizi Bekliyoruz!</h2>
+                        <p class="text-stone-300 text-sm mt-2">Yahşihan Erenler'deki sıcak ve samimi kafemize uğrayabilir veya siparişinizi telefon/WhatsApp ile verebilirsiniz.</p>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <!-- Adres -->
+                        <div class="flex items-start gap-4 p-4 bg-choco-800/80 rounded-2xl border border-amber-900/40">
+                            <div class="w-10 h-10 rounded-xl bg-caramel-500/20 text-caramel-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Adresimiz</h4>
+                                <p class="text-xs text-stone-300 mt-0.5">Erenler Mahallesi, 71450 Yahşihan / Kırıkkale</p>
+                            </div>
+                        </div>
+
+                        <!-- Telefon -->
+                        <div class="flex items-start gap-4 p-4 bg-choco-800/80 rounded-2xl border border-amber-900/40">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Sipariş & Bilgi Hattı</h4>
+                                <a href="tel:05527400771" class="text-xs text-amber-300 font-semibold hover:underline block mt-0.5">0552 740 07 71</a>
+                                <span class="text-[10px] text-stone-400">(Arama veya WhatsApp)</span>
+                            </div>
+                        </div>
+
+                        <!-- Çalışma Saatleri -->
+                        <div class="flex items-start gap-4 p-4 bg-choco-800/80 rounded-2xl border border-amber-900/40">
+                            <div class="w-10 h-10 rounded-xl bg-pistachio-500/20 text-pistachio-400 flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Çalışma Saatlerimiz</h4>
+                                <p class="text-xs text-stone-300 mt-0.5">Haftanın Her Günü: <span class="text-amber-300 font-bold">11:00 - 01:00</span></p>
+                                <span class="text-[10px] text-stone-400">Gece geç saatlere kadar tatlı servisimiz açıktır.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aksiyon Butonları -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=39.8475,33.4550" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-3 rounded-xl transition shadow">
+                            <i class="fa-solid fa-diamond-turn-right text-sm"></i>
+                            <span>Google Haritalar'da Yol Tarifi Al</span>
+                        </a>
+
+                        <a href="https://wa.me/905527400771" target="_blank" class="inline-flex items-center gap-2 bg-caramel-500 hover:bg-caramel-600 text-choco-950 text-xs font-bold px-5 py-3 rounded-xl transition shadow">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Doğrudan Mesaj At</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sağ Taraf: Kesin Çalışan OpenStreetMap Haritası -->
+                <div class="lg:col-span-7">
+                    <div class="bg-choco-800 p-4 rounded-3xl border border-amber-900/40 shadow-2xl relative">
+                        <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-amber-900/30">
+                            <!-- Her ortamda %100 yüklenenOpenStreetMap Harita iframe -->
+                            <iframe 
+                                title="Tatlı Krizi Konumu" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                loading="lazy" 
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=33.4450%2C39.8400%2C33.4650%2C39.8550&amp;layer=mapnik&amp;marker=39.8475%2C33.4550">
+                            </iframe>
+                            
+                            <!-- Harita Üstü Yol Tarifi Rozeti -->
+                            <div class="absolute top-4 right-4 z-10">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=39.8475,33.4550" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition transform hover:scale-105">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                    <span>Yol Tarifi Başlat</span>
+                                </a>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-choco-950/90 backdrop-blur px-4 py-2.5 rounded-xl border border-amber-900/40 text-xs flex items-center gap-3 text-amber-200">
+                                <i class="fa-solid fa-store text-caramel-400"></i>
+                                <span>Yahşihan Erenler Şubesi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-choco-950 text-stone-400 text-xs py-10 border-t border-amber-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-caramel-500 text-choco-950 font-bold flex items-center justify-center text-sm">
+                        TK
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm">Tatlı Krizi - Yahşihan Erenler</p>
+                        <p class="text-[11px] text-stone-500">© 2026 Tüm Hakları Saklıdır. Kırıkkale'nin Tatlı ve Kahve Noktası.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-choco-800 text-stone-300 hover:text-white hover:bg-caramel-600 transition flex items-center justify-center">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                    </a>
+                    <a href="https://wa.me/905527400771" target="_blank" class="w-9 h-9 rounded-full bg-choco-800 text-stone-300 hover:text-white hover:bg-emerald-600 transition flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                    </a>
+                    <a href="tel:05527400771" class="w-9 h-9 rounded-full bg-choco-800 text-stone-300 hover:text-white hover:bg-amber-600 transition flex items-center justify-center">
+                        <i class="fa-solid fa-phone text-sm"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- İşletme Sahibine Dijital Sunum Rozeti -->
+            <div class="mt-8 pt-6 border-t border-choco-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500 gap-2">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-code text-pistachio-500"></i>
+                    <span>Bu Özel Dijital Web Sitesi & QR Menü Demosu **Tatlı Krizi** İçin Hazırlanmıştır.</span>
+                </span>
+                <span class="text-amber-400 font-semibold">📞 İletişim & WhatsApp: 0552 740 07 71</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBİL SABİT SEPET BARI -->
+    <div id="mobile-cart-bar" class="fixed bottom-4 left-4 right-4 z-40 md:hidden bg-choco-900/95 backdrop-blur border border-amber-900/60 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="relative w-10 h-10 rounded-xl bg-caramel-500 text-choco-950 font-bold flex items-center justify-center text-lg">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="mobile-badge" class="absolute -top-1.5 -right-1.5 bg-pistachio-500 text-choco-950 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </div>
+            <div>
+                <p class="text-xs text-stone-300">Toplam Tutar</p>
+                <p id="mobile-cart-total" class="font-bold text-sm text-amber-300">0 ₺</p>
+            </div>
+        </div>
+
+        <button onclick="toggleCartDrawer()" class="bg-gradient-to-r from-pistachio-600 to-pistachio-500 hover:from-pistachio-500 hover:to-pistachio-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
+            <span>Sepeti İncele</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+    </div>
+
+    <!-- SEPET ÇEKMECESİ (DRAWER MODAL) -->
+    <div id="cart-drawer-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300" onclick="toggleCartDrawer()"></div>
+
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-96 bg-cream text-choco-900 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <div class="bg-choco-900 text-white p-5 flex items-center justify-between border-b border-amber-900/40">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-caramel-400 text-lg"></i>
+                <h3 class="font-heading font-bold text-lg">Sipariş Sepetiniz</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-stone-300 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div id="cart-items-container" class="p-5 overflow-y-auto flex-1 space-y-4">
+            <div id="empty-cart-msg" class="text-center py-12 space-y-3">
+                <div class="w-16 h-16 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <p class="text-sm font-semibold text-stone-600">Sepetiniz şu an boş.</p>
+                <p class="text-xs text-stone-400 max-w-xs mx-auto">Menüden dilediğiniz tatlı veya kahveyi ekleyerek hemen sipariş verebilirsiniz.</p>
+            </div>
+        </div>
+
+        <div id="cart-summary-footer" class="p-5 bg-white border-t border-stone-200 space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1.5">Sipariş Türü:</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="setDeliveryType('masaya')" id="btn-type-masaya" class="delivery-btn active py-2 text-xs font-bold rounded-lg border border-caramel-500 bg-caramel-500 text-choco-950">
+                        📍 Masaya Servis
+                    </button>
+                    <button type="button" onclick="setDeliveryType('adrese')" id="btn-type-adrese" class="delivery-btn py-2 text-xs font-bold rounded-lg border border-stone-300 bg-stone-100 text-stone-700">
+                        🛵 Adrese / Gel-Al
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <input type="text" id="order-note" placeholder="Masa No (Örn: Masa 4) veya Adres Tarifi..." class="w-full text-xs p-2.5 rounded-lg border border-stone-300 bg-stone-50 focus:outline-none focus:ring-1 focus:ring-caramel-500">
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-stone-100">
+                <span class="text-sm font-bold text-stone-700">Genel Toplam:</span>
+                <span id="cart-drawer-total" class="font-heading text-xl font-extrabold text-choco-900">0 ₺</span>
+            </div>
+
+            <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2 text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>WhatsApp İle Siparişi Tamamla</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- BİLDİRİM TOAST -->
+    <div id="toast" class="fixed top-24 right-4 z-50 bg-choco-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-amber-800/50 flex items-center gap-3 transform translate-y-[-150%] transition-transform duration-300">
+        <i class="fa-solid fa-circle-check text-pistachio-500 text-lg"></i>
+        <span id="toast-text" class="text-xs font-medium">Ürün sepete eklendi!</span>
+    </div>
+
+    <!-- JAVASCRIPT MANTIĞI -->
+    <script>
+        const menuItems = [
+            {
+                id: 1,
+                title: "Belçika Çikolatalı San Sebastian",
+                category: "cikolata",
+                price: 220,
+                desc: "Fırından taze çıkmış ipeksi dokulu San Sebastian üzerine eritilmiş sıcak Belçika çikolatası.",
+                badge: "En Çok Satan",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                title: "Dubai Çikolatalı Brownie",
+                category: "cikolata",
+                price: 240,
+                desc: "Çıtır kadayıf, Antep fıstığı ezmesi ve yoğun çikolata kaplamalı sıcak ıslak brownie.",
+                badge: "Trend Lezzet",
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                title: "Antep Fıstıklı Kral Waffle",
+                category: "waffle",
+                price: 210,
+                desc: "Çıtır taze waffle hamuru, çilek, muz, bol Antep fıstığı parçaları ve sürme çikolata.",
+                badge: "Favori",
+                image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                title: "Lotus Biscoff Magnolia",
+                category: "sutlu",
+                price: 160,
+                desc: "Özel hafif vanilyalı krema, karamelize Biscoff bisküvi kırıntıları ve Lotus sosu.",
+                badge: "Hafif & Leziz",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                title: "Çikolata Kulesi Profiterol",
+                category: "cikolata",
+                price: 190,
+                desc: "Özel krema dolgulu taze şu hamurları, üzerini kaplayan ılık akışkan Belçika çikolatası.",
+                badge: "Klasik",
+                image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 6,
+                title: "Meyveli Çıtır Krep Bohçası",
+                category: "waffle",
+                price: 180,
+                desc: "Taze pişmiş krep içerisine taze çilek, muz, fındık krokan ve erimiş çikolata.",
+                badge: null,
+                image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 7,
+                title: "Iced Caramel Macchiato",
+                category: "kahve",
+                price: 110,
+                desc: "%100 Arabica espresso, soğuk süt, vanilya şurubu ve üstüne yoğun karamel sosu.",
+                badge: "Soğuk Kahve",
+                image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 8,
+                title: "Geleneksel Damla Sakızlı Türk Kahvesi",
+                category: "kahve",
+                price: 75,
+                desc: "Taze çekilmiş Türk kahvesi, yanında su ve özel çikolatalı lokum ikramıyla.",
+                badge: "Geleneksel",
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 9,
+                title: "Çilekli Belçika Fondü (2 Kişilik)",
+                category: "cikolata",
+                price: 290,
+                desc: "Sıcak benmari çikolata pottında taze çilek, muz, kivi ve marshmallow batırma keyfi.",
+                badge: "Paylaşımlık",
+                image: "https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 10,
+                title: "Belçika Çikolatalı Frappe",
+                category: "kahve",
+                price: 125,
+                desc: "Buzla harmanlanmış kıvamlı kahve, çikolata ve krema tepesiyle serinletici lezzet.",
+                badge: "Serinletici",
+                image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let cart = [];
+        let deliveryType = 'masaya';
+
+        function renderMenu() {
+            const menuGrid = document.getElementById('menu-grid');
+            const searchVal = document.getElementById('menu-search').value.toLowerCase().trim();
+
+            const filtered = menuItems.filter(item => {
+                const matchesCat = currentCategory === 'all' || item.category === currentCategory;
+                const matchesSearch = item.title.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                return matchesCat && matchesSearch;
+            });
+
+            if(filtered.length === 0) {
+                menuGrid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-stone-200">
+                        <i class="fa-solid fa-cookie-bite text-4xl text-stone-300 mb-2"></i>
+                        <p class="font-bold text-stone-700">Aradığınız kriterde ürün bulunamadı.</p>
+                        <p class="text-xs text-stone-400 mt-1">Lütfen farklı bir kelime veya kategori deneyin.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            menuGrid.innerHTML = filtered.map(item => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-stone-100">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/2B1B17/FFFDF9?text=Tatli+Krizi'">
+                            ${item.badge ? `<span class="absolute top-3 left-3 bg-caramel-500 text-choco-950 text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow">${item.badge}</span>` : ''}
+                        </div>
+
+                        <div class="p-4 space-y-2">
+                            <div class="flex items-start justify-between gap-2">
+                                <h3 class="font-heading font-bold text-base text-choco-900 group-hover:text-caramel-600 transition-colors">${item.title}</h3>
+                            </div>
+                            <p class="text-stone-500 text-xs line-clamp-2 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-3">
+                        <span class="font-heading font-extrabold text-lg text-choco-900">${item.price} ₺</span>
+                        <button onclick="addToCart(${item.id})" class="bg-choco-900 hover:bg-caramel-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-plus text-[10px]"></i>
+                            <span>Sepete Ekle</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-choco-900', 'text-white', 'shadow');
+                btn.classList.add('bg-white', 'text-choco-900');
+            });
+            event.currentTarget.classList.remove('bg-white', 'text-choco-900');
+            event.currentTarget.classList.add('bg-choco-900', 'text-white', 'shadow');
+            renderMenu();
+        }
+
+        function filterMenu() {
+            renderMenu();
+        }
+
+        function addToCart(id) {
+            const product = menuItems.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.title}" sepete eklendi!`);
+        }
+
+        function quickAddToCart(id) {
+            addToCart(id);
+            toggleCartDrawer();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            document.getElementById('cart-count-badge').innerText = totalCount;
+            document.getElementById('mobile-badge').innerText = totalCount;
+            document.getElementById('mobile-cart-total').innerText = `${totalPrice} ₺`;
+            document.getElementById('cart-drawer-total').innerText = `${totalPrice} ₺`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div id="empty-cart-msg" class="text-center py-12 space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-3xl mx-auto">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <p class="text-sm font-semibold text-stone-600">Sepetiniz şu an boş.</p>
+                        <p class="text-xs text-stone-400 max-w-xs mx-auto">Menüden dilediğiniz tatlı veya kahveyi ekleyerek hemen sipariş verebilirsiniz.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between gap-3 p-3 bg-white rounded-xl border border-stone-200 shadow-sm">
+                    <img src="${item.image}" alt="${item.title}" class="w-12 h-12 rounded-lg object-cover">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-xs text-choco-900 truncate">${item.title}</h4>
+                        <p class="text-[11px] text-stone-500">${item.price} ₺ x ${item.qty} = <span class="font-bold text-choco-900">${item.price * item.qty} ₺</span></p>
+                    </div>
+                    <div class="flex items-center gap-1 bg-stone-100 rounded-lg p-1 border border-stone-200">
+                        <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">-</button>
+                        <span class="text-xs font-bold px-1.5">${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setDeliveryType(type) {
+            deliveryType = type;
+            const btnMasaya = document.getElementById('btn-type-masaya');
+            const btnAdrese = document.getElementById('btn-type-adrese');
+
+            if (type === 'masaya') {
+                btnMasaya.className = "delivery-btn active py-2 text-xs font-bold rounded-lg border border-caramel-500 bg-caramel-500 text-choco-950";
+                btnAdrese.className = "delivery-btn py-2 text-xs font-bold rounded-lg border border-stone-300 bg-stone-100 text-stone-700";
+            } else {
+                btnAdrese.className = "delivery-btn active py-2 text-xs font-bold rounded-lg border border-caramel-500 bg-caramel-500 text-choco-950";
+                btnMasaya.className = "delivery-btn py-2 text-xs font-bold rounded-lg border border-stone-300 bg-stone-100 text-stone-700";
+            }
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showToast("Lütfen önce sepete ürün ekleyin!");
+                return;
+            }
+
+            const note = document.getElementById('order-note').value.trim();
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
+            let message = `*📍 TATLI KRİZİ SİPARİŞİ (Yahşihan Erenler)*\n\n`;
+            message += `*Sipariş Tipi:* ${deliveryType === 'masaya' ? 'Masaya Servis' : 'Adrese / Gel-Al'}\n`;
+            if (note) {
+                message += `*Not/Masa:* ${note}\n`;
+            }
+            message += `\n*Ürünler:*\n`;
+
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.title} (x${item.qty}) - ${item.price * item.qty} ₺\n`;
+            });
+
+            message += `\n*Toplam Tutar:* ${totalPrice} ₺\n`;
+            message += `\nSiparişimin taze şekilde hazırlanmasını rica ederim. Teşekkürler!`;
+
+            const encodedMsg = encodeURIComponent(message);
+            const waUrl = `https://wa.me/905527400771?text=${encodedMsg}`;
+            window.open(waUrl, '_blank');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = text;
+            toast.classList.remove('translate-y-[-150%]');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-[-150%]');
+            }, 2500);
+        }
+
+        window.onload = function() {
+            renderMenu();
+        }
+    </script>
+</body>
+</html>
