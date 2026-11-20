@@ -110,7 +110,7 @@
                 <!-- Sağ Aksiyon Butonları -->
                 <div class="flex items-center gap-3">
                     <!-- Sepet Butonu -->
-                    <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-choco-800 hover:bg-choco-700 text-cream rounded-full transition border border-amber-900/50 flex items-center justify-center">
+                    <button type="button" onclick="toggleCartDrawer()" class="relative p-2.5 bg-choco-800 hover:bg-choco-700 text-cream rounded-full transition border border-amber-900/50 flex items-center justify-center">
                         <i class="fa-solid fa-basket-shopping text-lg text-caramel-400"></i>
                         <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-pistachio-500 text-choco-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
                     </button>
@@ -122,7 +122,7 @@
                     </a>
 
                     <!-- Mobil Menü Butonu -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden text-cream hover:text-caramel-400 p-2">
+                    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-cream hover:text-caramel-400 p-2">
                         <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -151,8 +151,8 @@
         <div class="absolute inset-0 z-0 opacity-25 mix-blend-overlay pointer-events-none">
             <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1600&q=80" alt="Tatlı Arka Plan" class="w-full h-full object-cover">
         </div>
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-caramel-500/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-pistachio-500/15 rounded-full blur-3xl"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-caramel-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-pistachio-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -204,7 +204,7 @@
                 <!-- Sağ Görsel Vitrin -->
                 <div class="lg:col-span-5 relative">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-1.5 bg-gradient-to-r from-caramel-500 to-pistachio-500 rounded-3xl blur opacity-75 animate-pulse"></div>
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-caramel-500 to-pistachio-500 rounded-3xl blur opacity-75 animate-pulse pointer-events-none"></div>
                         
                         <div class="relative bg-choco-800 rounded-3xl overflow-hidden border border-amber-900/50 shadow-2xl">
                             <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="San Sebastian Cheesecake" class="w-full h-80 sm:h-96 object-cover transform hover:scale-105 transition duration-500">
@@ -217,7 +217,7 @@
                                 <h3 class="font-heading text-xl font-bold text-white">Sıcak Belçika Çikolatalı San Sebastian</h3>
                                 <p class="text-xs text-stone-300 mt-1">Fırından taze çıkan ipeksi dokulu cheesecake, üzerine eritilmiş sıcak Belçika çikolatası ile servis edilir.</p>
                                 
-                                <button onclick="quickAddToCart(1)" class="mt-4 w-full bg-pistachio-600 hover:bg-pistachio-500 text-white font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow">
+                                <button type="button" onclick="quickAddToCart(1)" class="mt-4 w-full bg-pistachio-600 hover:bg-pistachio-500 text-white font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow">
                                     <i class="fa-solid fa-plus text-xs"></i> Sepete Ekle
                                 </button>
                             </div>
@@ -294,19 +294,19 @@
 
             <!-- Kategori Butonları -->
             <div class="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-hide mb-8">
-                <button onclick="setCategory('all')" class="cat-btn active px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-choco-900 text-white shadow">
+                <button type="button" onclick="setCategory('all', this)" class="cat-btn active px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-choco-900 text-white shadow">
                     Tüm Ürünler
                 </button>
-                <button onclick="setCategory('cikolata')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                <button type="button" onclick="setCategory('cikolata', this)" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
                     🍫 Çikolatalı Tatlılar
                 </button>
-                <button onclick="setCategory('waffle')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                <button type="button" onclick="setCategory('waffle', this)" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
                     🧇 Waffle & Krep
                 </button>
-                <button onclick="setCategory('sutlu')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                <button type="button" onclick="setCategory('sutlu', this)" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
                     🍮 Sütlü & Kuplar
                 </button>
-                <button onclick="setCategory('kahve')" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
+                <button type="button" onclick="setCategory('kahve', this)" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition bg-white text-choco-900 hover:bg-stone-200 border border-stone-300">
                     ☕ Kahve & İçecekler
                 </button>
             </div>
@@ -411,7 +411,7 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM & KONUM & SORUNSUZ OPENSTREETMAP HARİTASI -->
+    <!-- İLETİŞİM & KONUM & OPENSTREETMAP HARİTASI -->
     <section id="contact" class="py-16 bg-choco-900 text-cream relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -475,11 +475,10 @@
                     </div>
                 </div>
 
-                <!-- Sağ Taraf: Kesin Çalışan OpenStreetMap Haritası -->
+                <!-- Sağ Taraf: OpenStreetMap Haritası -->
                 <div class="lg:col-span-7">
                     <div class="bg-choco-800 p-4 rounded-3xl border border-amber-900/40 shadow-2xl relative">
                         <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-amber-900/30">
-                            <!-- Her ortamda %100 yüklenenOpenStreetMap Harita iframe -->
                             <iframe 
                                 title="Tatlı Krizi Konumu" 
                                 width="100%" 
@@ -489,7 +488,6 @@
                                 src="https://www.openstreetmap.org/export/embed.html?bbox=33.4450%2C39.8400%2C33.4650%2C39.8550&amp;layer=mapnik&amp;marker=39.8475%2C33.4550">
                             </iframe>
                             
-                            <!-- Harita Üstü Yol Tarifi Rozeti -->
                             <div class="absolute top-4 right-4 z-10">
                                 <a href="https://www.google.com/maps/dir/?api=1&destination=39.8475,33.4550" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition transform hover:scale-105">
                                     <i class="fa-solid fa-location-arrow"></i>
@@ -510,7 +508,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-choco-950 text-stone-400 text-xs py-10 border-t border-amber-950">
+    <footer class="bg-choco-950 text-stone-400 text-xs py-10 pb-24 md:pb-10 border-t border-amber-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 
@@ -562,23 +560,26 @@
             </div>
         </div>
 
-        <button onclick="toggleCartDrawer()" class="bg-gradient-to-r from-pistachio-600 to-pistachio-500 hover:from-pistachio-500 hover:to-pistachio-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
+        <button type="button" onclick="toggleCartDrawer()" class="bg-gradient-to-r from-pistachio-600 to-pistachio-500 hover:from-pistachio-500 hover:to-pistachio-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
             <span>Sepeti İncele</span>
             <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </button>
     </div>
 
     <!-- SEPET ÇEKMECESİ (DRAWER MODAL) -->
-    <div id="cart-drawer-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300" onclick="toggleCartDrawer()"></div>
+    <div id="cart-drawer-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300" onclick="closeCartDrawer()"></div>
 
     <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-96 bg-cream text-choco-900 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
         <div class="bg-choco-900 text-white p-5 flex items-center justify-between border-b border-amber-900/40">
             <div class="flex items-center gap-2">
+                <button type="button" onclick="closeCartDrawer()" class="flex items-center gap-2 text-stone-300 hover:text-white pr-2 py-1">
+                    <i class="fa-solid fa-arrow-left text-base"></i>
+                </button>
                 <i class="fa-solid fa-bag-shopping text-caramel-400 text-lg"></i>
                 <h3 class="font-heading font-bold text-lg">Sipariş Sepetiniz</h3>
             </div>
-            <button onclick="toggleCartDrawer()" class="text-stone-300 hover:text-white p-1">
-                <i class="fa-solid fa-xmark text-xl"></i>
+            <button type="button" onclick="closeCartDrawer()" aria-label="Sepeti Kapat" class="w-9 h-9 rounded-full bg-choco-800 hover:bg-choco-700 text-stone-200 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
         </div>
 
@@ -614,17 +615,17 @@
                 <span id="cart-drawer-total" class="font-heading text-xl font-extrabold text-choco-900">0 ₺</span>
             </div>
 
-            <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2 text-sm">
+            <button type="button" onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2 text-sm">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
                 <span>WhatsApp İle Siparişi Tamamla</span>
             </button>
         </div>
     </div>
 
-    <!-- BİLDİRİM TOAST -->
-    <div id="toast" class="fixed top-24 right-4 z-50 bg-choco-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-amber-800/50 flex items-center gap-3 transform translate-y-[-150%] transition-transform duration-300">
-        <i class="fa-solid fa-circle-check text-pistachio-500 text-lg"></i>
-        <span id="toast-text" class="text-xs font-medium">Ürün sepete eklendi!</span>
+    <!-- BİLDİRİM TOAST (Tıklama engellemez, alt ortada görünür ve otomatik gizlenir) -->
+    <div id="toast" class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-[60] pointer-events-none opacity-0 translate-y-4 bg-choco-900/95 text-white px-4 py-3 rounded-xl shadow-2xl border border-amber-700/60 flex items-center gap-2.5 transition-all duration-300 max-w-[90vw]">
+        <i class="fa-solid fa-circle-check text-pistachio-500 text-base shrink-0"></i>
+        <span id="toast-text" class="text-xs font-medium truncate">Ürün sepete eklendi!</span>
     </div>
 
     <!-- JAVASCRIPT MANTIĞI -->
@@ -725,6 +726,8 @@
         let currentCategory = 'all';
         let cart = [];
         let deliveryType = 'masaya';
+        let toastTimer = null;
+        let isCartOpen = false;
 
         function renderMenu() {
             const menuGrid = document.getElementById('menu-grid');
@@ -736,7 +739,7 @@
                 return matchesCat && matchesSearch;
             });
 
-            if(filtered.length === 0) {
+            if (filtered.length === 0) {
                 menuGrid.innerHTML = `
                     <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-stone-200">
                         <i class="fa-solid fa-cookie-bite text-4xl text-stone-300 mb-2"></i>
@@ -765,7 +768,7 @@
 
                     <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-3">
                         <span class="font-heading font-extrabold text-lg text-choco-900">${item.price} ₺</span>
-                        <button onclick="addToCart(${item.id})" class="bg-choco-900 hover:bg-caramel-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow">
+                        <button type="button" onclick="addToCart(${item.id})" class="bg-choco-900 hover:bg-caramel-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow">
                             <i class="fa-solid fa-plus text-[10px]"></i>
                             <span>Sepete Ekle</span>
                         </button>
@@ -774,14 +777,16 @@
             `).join('');
         }
 
-        function setCategory(cat) {
+        function setCategory(cat, btnEl) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('bg-choco-900', 'text-white', 'shadow');
                 btn.classList.add('bg-white', 'text-choco-900');
             });
-            event.currentTarget.classList.remove('bg-white', 'text-choco-900');
-            event.currentTarget.classList.add('bg-choco-900', 'text-white', 'shadow');
+            if (btnEl) {
+                btnEl.classList.remove('bg-white', 'text-choco-900');
+                btnEl.classList.add('bg-choco-900', 'text-white', 'shadow');
+            }
             renderMenu();
         }
 
@@ -805,7 +810,7 @@
 
         function quickAddToCart(id) {
             addToCart(id);
-            toggleCartDrawer();
+            openCartDrawer();
         }
 
         function changeQty(id, delta) {
@@ -850,9 +855,9 @@
                         <p class="text-[11px] text-stone-500">${item.price} ₺ x ${item.qty} = <span class="font-bold text-choco-900">${item.price * item.qty} ₺</span></p>
                     </div>
                     <div class="flex items-center gap-1 bg-stone-100 rounded-lg p-1 border border-stone-200">
-                        <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">-</button>
+                        <button type="button" onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">-</button>
                         <span class="text-xs font-bold px-1.5">${item.qty}</span>
-                        <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">+</button>
+                        <button type="button" onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-white text-choco-900 font-bold text-xs flex items-center justify-center shadow-sm">+</button>
                     </div>
                 </div>
             `).join('');
@@ -900,18 +905,50 @@
             window.open(waUrl, '_blank');
         }
 
-        function toggleCartDrawer() {
+        function openCartDrawer() {
+            if (isCartOpen) return;
             const drawer = document.getElementById('cart-drawer');
             const backdrop = document.getElementById('cart-drawer-backdrop');
 
-            if (drawer.classList.contains('translate-x-full')) {
-                drawer.classList.remove('translate-x-full');
-                backdrop.classList.remove('hidden');
-            } else {
-                drawer.classList.add('translate-x-full');
-                backdrop.classList.add('hidden');
+            drawer.classList.remove('translate-x-full');
+            backdrop.classList.remove('hidden');
+            isCartOpen = true;
+
+            // Telefon geri tuşuna basıldığında sitenin kapanmaması için geçmişe durum ekle
+            if (!window.history.state || !window.history.state.cartOpen) {
+                window.history.pushState({ cartOpen: true }, '', '#sepet');
             }
         }
+
+        function closeCartDrawer(fromPopState = false) {
+            if (!isCartOpen) return;
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+
+            drawer.classList.add('translate-x-full');
+            backdrop.classList.add('hidden');
+            isCartOpen = false;
+
+            // Kapatma butonuna tıklandıysa eklenen geçmiş kaydını temizle
+            if (!fromPopState && window.history.state && window.history.state.cartOpen) {
+                window.history.back();
+            }
+        }
+
+        function toggleCartDrawer() {
+            if (isCartOpen) {
+                closeCartDrawer();
+            } else {
+                openCartDrawer();
+            }
+        }
+
+        // Telefonun fiziksel / ekran geri tuşunu yakala
+        window.addEventListener('popstate', function() {
+            if (isCartOpen) {
+                closeCartDrawer(true);
+            }
+        });
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -921,16 +958,23 @@
         function showToast(text) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').innerText = text;
-            toast.classList.remove('translate-y-[-150%]');
 
-            setTimeout(() => {
-                toast.classList.add('translate-y-[-150%]');
-            }, 2500);
+            if (toastTimer) {
+                clearTimeout(toastTimer);
+            }
+
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4');
+            }, 2000);
         }
 
-        window.onload = function() {
+        window.addEventListener('DOMContentLoaded', function() {
             renderMenu();
-        }
+        });
     </script>
 </body>
 </html>
